@@ -39,7 +39,7 @@ We use the **Plant Pathology 2020 - FGVC7** dataset from Kaggle:
 - Matplotlib & Seaborn  
 - imbalanced-learn (SMOTE)  
 - joblib
-
+---
 ### ⚙️ Process
 
 The project follows a step-by-step traditional machine learning pipeline:
@@ -74,6 +74,18 @@ The project follows a step-by-step traditional machine learning pipeline:
   - **Precision, Recall, F1-score**
   - **Confusion Matrix**
 - **Random Forest** achieved the highest accuracy.
-
+---
 #### 7. **Model Saving**
 - Saved the trained model, label encoder, and scaler using `joblib` for future use and deployment.
+
+---
+### 🤝 Contributing
+Contributions are welcome! If you find bugs or have suggestions for improvements, feel free to open an issue or submit a pull request.
+---
+### 📄 License
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+---
+### 📬 Contact
+- 📧 **Email**: tanurimamukherjee2@gmail.com  
+- 💻 **GitHub**: [tanurima-mukherjee](https://github.com/tanurima-mukherjee)
+---
