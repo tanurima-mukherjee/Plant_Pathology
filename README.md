@@ -74,7 +74,7 @@ The project follows a step-by-step traditional machine learning pipeline:
   - **Precision, Recall, F1-score**
   - **Confusion Matrix**
 - **Random Forest** achieved the highest accuracy.
----
+
 #### 7. **Model Saving**
 - Saved the trained model, label encoder, and scaler using `joblib` for future use and deployment.
 
