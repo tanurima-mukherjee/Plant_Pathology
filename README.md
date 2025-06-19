@@ -1,28 +1,79 @@
+# 🌿 Plant Disease Classification using Traditional Machine Learning
 
-## 🌿 Plant Disease Classification using Machine Learning
+## 🔍 Overview
 
-### 🔍 Introduction
+This project focuses on classifying plant leaf images into four categories — **Healthy**, **Rust**, **Scab**, and **Multiple Diseases** — using **traditional machine learning methods**. Instead of using deep learning, we extract **handcrafted features** (color histograms) from images and train models like **Random Forest**, **Support Vector Machine (SVM)**, and **Gradient Boosting Machines (GBM)**.
 
-This project focuses on identifying plant leaf diseases using traditional machine learning techniques. Given the importance of early detection in agriculture, we built a system that classifies leaf images into four categories: **Healthy**, **Rust**, **Scab**, and **Multiple Diseases**. The goal is to assist farmers and researchers by providing an efficient and lightweight solution without needing deep learning models.
-
-Using color histograms as handcrafted features and classifiers like Random Forest, SVM, and Gradient Boosting, we achieved high accuracy even with imbalanced classes. The entire pipeline—from image preprocessing to prediction—is built using Python and scikit-learn.
-
----
-
-### 💡 What This Project Does
-
-* Reads plant leaf images from the **Plant Pathology 2020 - FGVC7** dataset
-* Extracts color histogram features using OpenCV
-* Handles class imbalance using **SMOTE**
-* Trains three ML models (Random Forest, SVM, and GBM)
-* Performs hyperparameter tuning using GridSearchCV
-* Evaluates model performance using accuracy and classification report
-* Saves the model and preprocessing tools (like LabelEncoder and Scaler) using `joblib` for deployment
+By using efficient techniques and handling class imbalance with SMOTE, the final models are accurate, interpretable, and lightweight — making them suitable for real-world agricultural applications on low-resource devices.
 
 ---
 
-### 📌 Why This Project is Important
+## ✨ Features
 
-Plant diseases, if not detected early, can lead to major crop losses. Deep learning solutions are powerful but often require high-end hardware. This project offers an alternative by using **traditional ML with handcrafted features**, which is faster and works on lower-end systems.
+- 📁 Reads and processes `.jpg` plant leaf images
+- 🧠 Extracts handcrafted features using OpenCV (color histograms)
+- 🧪 Handles **class imbalance** using **SMOTE**
+- 🔧 Trains models: Random Forest, SVM, and GBM
+- 🛠️ Hyperparameter tuning using `GridSearchCV`
+- 🧾 Model evaluation with precision, recall, F1-score
+- 💾 Saves models, encoders, and scalers using `joblib` for deployment
 
+---
 
+## 📚 Dataset
+
+We use the **Plant Pathology 2020 - FGVC7** dataset from Kaggle:  
+🔗 [Dataset Link](https://www.kaggle.com/c/plant-pathology-2020-fgvc7/data)
+
+- 1,821 images of plant leaves  
+- Multi-class labels: `healthy`, `rust`, `scab`, `multiple_diseases`
+
+---
+
+## 🛠️ Technologies Used
+
+- Python 3  
+- Scikit-learn  
+- OpenCV  
+- NumPy & Pandas  
+- Matplotlib & Seaborn  
+- imbalanced-learn (SMOTE)  
+- joblib
+
+### ⚙️ Process
+
+The project follows a step-by-step traditional machine learning pipeline:
+
+#### 1. **Data Preprocessing**
+- **CSV Reading**: Loaded image IDs and one-hot encoded labels from the `train.csv`.
+- **Label Encoding**: Converted multi-class columns (`healthy`, `rust`, `scab`, `multiple_diseases`) into a single label column.
+- **Train-Test Split**: Divided the dataset into 80% training and 20% testing.
+
+#### 2. **Feature Extraction**
+- **Color Histogram**: Used OpenCV to extract HSV color histograms from leaf images.
+- **Fixed Size**: All images resized to 128x128 to maintain consistency.
+- **Histogram Binning**: Used 8x8x8 bins for H, S, and V channels and flattened the histogram into a 1D feature vector.
+
+#### 3. **Class Imbalance Handling**
+- **Issue**: Dataset was imbalanced with very few samples for `multiple_diseases`.
+- **Solution**: Applied **SMOTE (Synthetic Minority Over-sampling Technique)** to generate synthetic examples for minority classes and balance the training set.
+
+#### 4. **Feature Scaling**
+- Used `StandardScaler` to normalize feature values before applying SVM or other distance-based models.
+
+#### 5. **Model Training**
+- Trained three traditional ML models:
+  - **Random Forest Classifier**
+  - **Support Vector Machine (SVM)**
+  - **Gradient Boosting Classifier (GBM)**
+- Used `GridSearchCV` to tune hyperparameters for each model.
+
+#### 6. **Model Evaluation**
+- Evaluated models using:
+  - **Accuracy**
+  - **Precision, Recall, F1-score**
+  - **Confusion Matrix**
+- **Random Forest** achieved the highest accuracy.
+
+#### 7. **Model Saving**
+- Saved the trained model, label encoder, and scaler using `joblib` for future use and deployment.
