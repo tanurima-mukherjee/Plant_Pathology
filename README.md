@@ -47,19 +47,19 @@ The project follows a step-by-step traditional machine learning pipeline:
 #### 1. **Data Preprocessing**
 - **CSV Reading**: Loaded image IDs and one-hot encoded labels from the `train.csv`.
 - **Label Encoding**: Converted multi-class columns (`healthy`, `rust`, `scab`, `multiple_diseases`) into a single label column.
-- **Train-Test Split**: Divided the dataset into 80% training and 20% testing.
+- **Train-Test Split**: Divided the dataset into `80%` training and `20%` testing.
 
 #### 2. **Feature Extraction**
-- **Color Histogram**: Used OpenCV to extract HSV color histograms from leaf images.
-- **Fixed Size**: All images resized to 128x128 to maintain consistency.
-- **Histogram Binning**: Used 8x8x8 bins for H, S, and V channels and flattened the histogram into a 1D feature vector.
+- **Color Histogram**: Used `OpenCV` to extract `HSV` color histograms from leaf images.
+- **Fixed Size**: All images resized to `128x128` to maintain consistency.
+- **Histogram Binning**: Used `8x8x8` bins for H, S, and V channels and flattened the histogram into a `1D feature vector`.
 
 #### 3. **Class Imbalance Handling**
 - **Issue**: Dataset was imbalanced with very few samples for `multiple_diseases`.
 - **Solution**: Applied **RandomOverSampler(Manual)** to generate synthetic examples for minority classes and balance the training set.
 
 #### 4. **Feature Scaling**
-- Used `StandardScaler` to normalize feature values before applying SVM or other distance-based models.
+- Used `StandardScaler` to normalize feature values before applying `SVM` or other distance-based models.
 
 #### 5. **Model Training**
 - Trained three traditional ML models:
