@@ -13,9 +13,9 @@ By using efficient techniques and handling class imbalance with RandomOverSample
 - 📁 Reads and processes `.jpg` plant leaf images
 - 🧠 Extracts handcrafted features using OpenCV (color histograms)
 - 🧪 Handles **class imbalance** using **RandomOverSampler(Manual)**
-- 🔧 Trains models: Random Forest, SVM, and GBM
+- 🔧 Trains models: `Random Forest`, `SVM`, and `GBM`
 - 🛠️ Hyperparameter tuning using `GridSearchCV`
-- 🧾 Model evaluation with precision, recall, F1-score
+- 🧾 Model evaluation with `accuracy`, `precision`, `recall`, `F1-score`
 - 💾 Saves models, encoders, and scalers using `joblib` for deployment
 
 ---
@@ -32,13 +32,13 @@ We use the **Plant Pathology 2020 - FGVC7** dataset from Kaggle:
 
 ## 🛠️ Technologies Used
 
-- Python 3  
-- Scikit-learn  
-- OpenCV  
-- NumPy & Pandas  
-- Matplotlib & Seaborn  
-- imbalanced-learn (RandomOverSampler(Manual))  
-- joblib
+- `Python 3`  
+- `Scikit-learn`  
+- `OpenCV`  
+- `NumPy` & `Pandas`  
+- `Matplotlib` & `Seaborn`  
+- `imbalanced-learn` (`RandomOverSampler`(Manual))  
+- `joblib`
 ---
 ### ⚙️ Process
 
