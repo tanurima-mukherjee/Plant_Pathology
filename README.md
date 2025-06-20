@@ -4,7 +4,7 @@
 
 This project focuses on classifying plant leaf images into four categories — **Healthy**, **Rust**, **Scab**, and **Multiple Diseases** — using **traditional machine learning methods**. Instead of using deep learning, we extract **handcrafted features** (color histograms) from images and train models like **Random Forest**, **Support Vector Machine (SVM)**, and **Gradient Boosting Machines (GBM)**.
 
-By using efficient techniques and handling class imbalance with SMOTE, the final models are accurate, interpretable, and lightweight — making them suitable for real-world agricultural applications on low-resource devices.
+By using efficient techniques and handling class imbalance with RandomOverSampler(Manual), the final models are accurate, interpretable, and lightweight — making them suitable for real-world agricultural applications on low-resource devices.
 
 ---
 
