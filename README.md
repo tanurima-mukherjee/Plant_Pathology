@@ -37,7 +37,7 @@ We use the **Plant Pathology 2020 - FGVC7** dataset from Kaggle:
 - OpenCV  
 - NumPy & Pandas  
 - Matplotlib & Seaborn  
-- imbalanced-learn (SMOTE)  
+- imbalanced-learn (RandomOverSampler(Manual))  
 - joblib
 ---
 ### ⚙️ Process
@@ -56,7 +56,7 @@ The project follows a step-by-step traditional machine learning pipeline:
 
 #### 3. **Class Imbalance Handling**
 - **Issue**: Dataset was imbalanced with very few samples for `multiple_diseases`.
-- **Solution**: Applied **SMOTE (Synthetic Minority Over-sampling Technique)** to generate synthetic examples for minority classes and balance the training set.
+- **Solution**: Applied **RandomOverSampler(Manual)** to generate synthetic examples for minority classes and balance the training set.
 
 #### 4. **Feature Scaling**
 - Used `StandardScaler` to normalize feature values before applying SVM or other distance-based models.
