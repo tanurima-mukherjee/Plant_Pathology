@@ -11,7 +11,7 @@ By using efficient techniques and handling class imbalance with RandomOverSample
 ## ✨ Features
 
 - 📁 Reads and processes `.jpg` plant leaf images
-- 🧠 Extracts handcrafted features using OpenCV (color histograms)
+- 🧠 Extracts handcrafted features using `OpenCV` (color histograms)
 - 🧪 Handles **class imbalance** using **RandomOverSampler(Manual)**
 - 🔧 Trains models: `Random Forest`, `SVM`, and `GBM`
 - 🛠️ Hyperparameter tuning using `GridSearchCV`
