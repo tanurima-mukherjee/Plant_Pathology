@@ -1,0 +1,8 @@
+Flask
+Werkzeug
+numpy
+opencv-python
+Pillow
+scikit-learn==1.5.0
+joblib
+
