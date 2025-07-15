@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🌱 Plant Disease Classifier - Upload</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .upload-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 128, 128, 0.1);
+      border: 1px solid rgba(87, 199, 163, 0.2);
+    }
+
+    .upload-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .upload-header h1 {
+      font-size: 2.5rem;
+      color: #0d4747;
+      margin-bottom: 10px;
+    }
+
+    .upload-header p {
+      color: #1f4747;
+      font-size: 1.1rem;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #0b4b46;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .model-selector {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e0f7f1;
+      border-radius: 12px;
+      font-size: 16px;
+      background: white;
+      color: #0d4747;
+      transition: all 0.3s ease;
+    }
+
+    .model-selector:focus {
+      outline: none;
+      border-color: #57c7a3;
+      box-shadow: 0 0 0 3px rgba(87, 199, 163, 0.1);
+    }
+
+    .file-upload-area {
+      border: 3px dashed #57c7a3;
+      border-radius: 16px;
+      padding: 40px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #f8fdfc, #e8f8f5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .file-upload-area:hover {
+      border-color: #4db6ac;
+      background: linear-gradient(135deg, #f0fdf9, #dcfce7);
+      transform: translateY(-2px);
+    }
+
+    .file-upload-area.dragover {
+      border-color: #ff6b6b;
+      background: linear-gradient(135deg, #fef2f2, #fee2e2);
+    }
+
+    .upload-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .upload-text {
+      font-size: 1.2rem;
+      color: #0d4747;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .upload-hint {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    #image {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .image-preview {
+      margin-top: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .preview-img {
+      max-width: 200px;
+      max-height: 200px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .predict-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #ff6b6b, #e53935);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 15px rgba(255, 107, 107, 0.3);
+      margin-top: 20px;
+    }
+
+    .predict-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    }
+
+    .predict-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #0b4b46;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: #ff6b6b;
+    }
+
+    .model-info {
+      background: linear-gradient(135deg, #e8f8f5, #f0fdf9);
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 10px;
+      border-left: 4px solid #57c7a3;
+    }
+
+    .model-info p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #0d4747;
+    }
+
+    @media (max-width: 768px) {
+      .upload-container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+      
+      .upload-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <h2>🌿 ClassiLeaf</h2>
+      <div class="nav-links">
+        <a href="{{ url_for('landing') }}">Home</a>
+        <a href="{{ url_for('landing') }}#about">About</a>
+        <a href="{{ url_for('landing') }}#models">Models</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="upload-container">
+    <a href="{{ url_for('landing') }}" class="back-link">← Back to Home</a>
+    
+    <div class="upload-header">
+      <h1>🔬 Disease Detection</h1>
+      <p>Upload a leaf image and select an AI model for instant disease analysis</p>
+    </div>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data" id="uploadForm">
+      <div class="form-group">
+        <label for="model">🤖 Choose AI Model:</label>
+        <select name="model" id="model" class="model-selector" required>
+          {% for model in model_names %}
+            <option value="{{ model }}">{{ model }}</option>
+          {% endfor %}
+        </select>
+        <div class="model-info" id="modelInfo">
+          <p>💡 <strong>Gradient Boosting:</strong> High accuracy with ensemble learning - Best for complex patterns</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="image">📸 Upload Leaf Image:</label>
+        <div class="file-upload-area" id="uploadArea">
+          <span class="upload-icon">🌿</span>
+          <div class="upload-text">Drop your leaf image here</div>
+          <div class="upload-hint">or click to browse (PNG, JPG, JPEG)</div>
+          <input type="file" name="image" id="image" accept="image/*" required>
+        </div>
+        <div class="image-preview" id="imagePreview">
+          <img id="previewImg" class="preview-img" alt="Preview">
+          <p id="fileName"></p>
+        </div>
+      </div>
+
+      <button type="submit" class="predict-btn" id="predictBtn" disabled>
+        🔍 Analyze Disease
+      </button>
+    </form>
+  </div>
+
+  <script>
+    const uploadArea = document.getElementById('uploadArea');
+    const imageInput = document.getElementById('image');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImg = document.getElementById('previewImg');
+    const fileName = document.getElementById('fileName');
+    const predictBtn = document.getElementById('predictBtn');
+    const modelSelect = document.getElementById('model');
+    const modelInfo = document.getElementById('modelInfo');
+
+    const modelDescriptions = {
+      'Gradient Boosting': '💡 <strong>Gradient Boosting:</strong> High accuracy with ensemble learning - Best for complex patterns',
+      'Random Forest': '🌲 <strong>Random Forest:</strong> Robust and reliable - Great for general disease detection',
+      'SVM': '⚡ <strong>SVM:</strong> Fast and efficient - Excellent for clear disease boundaries'
+    };
+
+    modelSelect.addEventListener('change', function() {
+      modelInfo.innerHTML = '<p>' + modelDescriptions[this.value] + '</p>';
+    });
+
+    uploadArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        imageInput.files = files;
+        handleFileSelect(files[0]);
+      }
+    });
+
+    uploadArea.addEventListener('click', function() {
+      imageInput.click();
+    });
+
+    imageInput.addEventListener('change', function(e) {
+      if (e.target.files.length > 0) {
+        handleFileSelect(e.target.files[0]);
+      }
+    });
+
+    function handleFileSelect(file) {
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          previewImg.src = e.target.result;
+          fileName.textContent = file.name;
+          imagePreview.style.display = 'block';
+          predictBtn.disabled = false;
+          uploadArea.style.border = '3px solid #4db6ac';
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html>
