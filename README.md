@@ -6,7 +6,16 @@ This project focuses on classifying plant leaf images into four categories — *
 
 By using efficient techniques and handling class imbalance with RandomOverSampler(Manual), the final models are accurate, interpretable, and lightweight — making them suitable for real-world agricultural applications on low-resource devices.
 
+
 ---
+
+### 🔗 Live Demo
+
+[Click here to try the model on Hugging Face]([[https://huggingface.co/spaces/your-username/your-space-name](https://huggingface.co/spaces/tanurima-mukherjee2/Plant_Diseases_Detection_Tool)](https://huggingface.co/spaces/tanurima-mukherjee2/Plant_Diseases_Detection_Tool))
+
+---
+
+
 
 ## ✨ Features
 
