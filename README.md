@@ -49,7 +49,8 @@ We use the **Plant Pathology 2020 - FGVC7** dataset from Kaggle:
 - `OpenCV`  
 - `NumPy` & `Pandas`  
 - `Matplotlib` & `Seaborn`  
-- `imbalanced-learn` (`RandomOverSampler`(Manual))  
+- `imbalanced-learn` (`RandomOverSampler`(Manual))
+- `SMOTE` 
 - `joblib`
 - `Flask`
 - `HTML`
