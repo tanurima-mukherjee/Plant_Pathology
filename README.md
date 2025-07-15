@@ -10,7 +10,8 @@ By using efficient techniques and handling class imbalance with RandomOverSample
 
 ### 🔗 Live Demo
 
-[Click here to try the model on Hugging Face]([[https://huggingface.co/spaces/tanurima-mukherjee/plant-disease-detecto](https://huggingface.co/spaces/tanurima-mukherjee2/Plant_Diseases_Detection_Tool)r](https://huggingface.co/spaces/tanurima-mukherjee2/Plant_Diseases_Detection_Tool))
+[Click here to try the model on Hugging Face](https://huggingface.co/spaces/tanurima-mukherjee2/Plant_Diseases_Detection_Tool)
+
 
 
 ---
